@@ -1,5 +1,4 @@
 version: "3.5"
-# https://docs.docker.com/compose/compose-file/compose-versioning/
 
 services:
   ak_invoice_php:
