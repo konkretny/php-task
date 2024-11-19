@@ -15,14 +15,14 @@ class DoctrineInvoiceRepository implements InvoiceRepositoryInterface
         private readonly EventDispatcherInterface $eventDispatcher
     ) {}
 
-    public function getInvoicesWithGreaterAmountAndStatus(int $amount, InvoiceStatus $invoiceStatus): array
+    public function getInvoicesWithGreaterAmountAndStatus(int $amount, string $invoiceStatus): array
     {
         return $this->entityManager
             ->createQueryBuilder()
             ->select('i')
             ->from(Invoice::class, 'i')
             ->where('i.status = :invoice_status')
-            ->setParameter(':invoice_status', InvoiceStatus::NEW)
+            ->setParameter(':invoice_status', $invoiceStatus)
             ->getQuery()
             ->getResult();
     }
